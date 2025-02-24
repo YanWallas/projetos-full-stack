@@ -8,6 +8,7 @@
 
 // convidados("Matheus", "Lucas", "Maria", "Ana caroline")
 
+// =======================================================================
 
 function sorteador(...numeros){
   console.log(numeros);
