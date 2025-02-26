@@ -4,11 +4,13 @@ const server = express();
 
 // Request Body = { nome: 'Nodejs', tipo: 'Backend' }
 
+const cursos = ['Node JS', 'JavaScript', 'React native'];
+
 // Route params = /curso/2
-server.get('/curso/:id', (req, res) => {
+server.get('/curso/:index', (req, res) => {
   
-  const id = req.params.id;
-  return res.json({ curso: `Curso ${id}`});
+  const { index } = req.params;
+  return res.json(cursos[index]);
 
 })
 
