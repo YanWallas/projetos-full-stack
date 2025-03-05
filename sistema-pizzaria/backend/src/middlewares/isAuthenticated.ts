@@ -22,7 +22,7 @@ export function isAuthenticated(
   const [, token] = authToken.split(" ")
 
   try{
-    //vvalidar esse token.[
+    //validar esse token.[
     const { sub } = verify(
       token,
       process.env.JWT_SECRET
