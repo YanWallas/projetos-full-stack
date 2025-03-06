@@ -25,7 +25,6 @@ class CreateProductController{
 
       return res.json(product);
     }
-
    
   }
 }
