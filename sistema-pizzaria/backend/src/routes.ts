@@ -20,6 +20,7 @@ import { AddItemController } from "./controllers/order/AddItemController";
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 import { RemoveItemController } from "./controllers/order/RemoveItemController";
 import { SendOrderController } from "./controllers/order/SendOrderController";
+import { ListOrderController } from "./controllers/order/ListOrderController";
 
 import uploadConfig from "./config/multer";
 
@@ -62,5 +63,8 @@ router.delete('/order/remove', isAuthenticated, new RemoveItemController().handl
 
 // -- ROTA PARA ATUALIZAR ORDER
 router.put('/order/send', isAuthenticated, new SendOrderController().handle)
+
+// -- ROTA PARA LISTAR TODOS OS PEDIDOS EM ABERTO.
+router.get('/orders', isAuthenticated, new ListOrderController().handle)
 
 export { router };
