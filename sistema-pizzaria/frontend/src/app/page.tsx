@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { api } from '@/services/api'
 import { redirect } from 'next/navigation';
+import { cookies } from 'next/headers';
 
 export default function Page(){
 
@@ -28,6 +29,16 @@ export default function Page(){
         return;
       }
       console.log(response.data);
+
+      const expressTime = 60 * 60 * 24 * 30 * 1000;
+      const cookiesStore = await cookies();
+
+      cookiesStore.set("session", response.data.token, {
+        maxAge: expressTime,
+        path: "/",
+        httpOnly:false,
+        secure: process.env.NODE_ENV === "production"
+      })
 
     }catch(err){
       console.log("error")
