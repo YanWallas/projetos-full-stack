@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import styles from './styles.module.scss';
 import Link from 'next/link';
-import logoImg from '/public/logo.svg';
+import logoImg from '/public/Slice Pizza - brancovermelho.png';
 import { LogOutIcon } from 'lucide-react';
 import { deleteCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
@@ -24,8 +24,8 @@ export function Header(){
           <Image
             alt='Logo Slice Pizza'
             src={logoImg}
-            width={190}
-            height={60}
+            width={160}
+            height={30}
             priority={true}
             quality={100}
           />
