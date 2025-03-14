@@ -29,12 +29,15 @@
 
     button{
       border: 0;
+      color: var(--red-700);
       background: transparent;
       margin-left: 16px;
       transition: transform 0.5s;
+      transition: color .8s;
 
       &:hover{
         transform: scale(1.2);
+        color: var(--red-900);
       }
     }
   }
