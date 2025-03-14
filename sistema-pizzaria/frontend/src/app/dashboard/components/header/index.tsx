@@ -20,7 +20,7 @@ export function Header(){
   return(
     <header className={styles.headerContainer}>
       <div className={styles.headerContent}>
-        <Link href="/dashboard">
+        <Link href="/dashboard" >
           <Image
             alt='Logo Slice Pizza'
             src={logoImg}
@@ -28,6 +28,7 @@ export function Header(){
             height={30}
             priority={true}
             quality={100}
+            className={styles.img}
           />
         </Link>
 

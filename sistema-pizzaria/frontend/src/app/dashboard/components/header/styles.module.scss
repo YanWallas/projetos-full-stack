@@ -39,3 +39,15 @@
     }
   }
 }
+
+@media (max-width: 420px){
+  .headerContent nav{
+    gap: 8px;
+
+  }
+
+  .img{
+    width: 120px;
+    height: 20px;
+  }
+}

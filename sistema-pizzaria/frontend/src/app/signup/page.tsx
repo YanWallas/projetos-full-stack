@@ -2,7 +2,7 @@
 import styles from '../page.module.scss'
 import Image from 'next/image'
 import Link from 'next/link'
-import logoImg from '/public/logo.svg'
+import logoImg from '/public/Slice Pizza - brancovermelho.png'
 import { api } from '@/services/api'
 import { redirect } from 'next/navigation'
 
@@ -41,6 +41,8 @@ export default function Signup(){
         <Image
           src={logoImg}
           alt='logo da pizzaria'
+          width={300}
+          height={70}
         />
 
         <section className={styles.login}>
