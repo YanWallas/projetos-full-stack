@@ -4,9 +4,22 @@ import { api } from '@/services/api';
 
 export default function Category(){
 
-  async function handleRegisterCategory() {
+  async function handleRegisterCategory(formData: FormData) {
     "use server"
-    console.log("testando")
+
+    const name = formData.get("name")
+
+    if(name === "") return;
+
+    const data = {
+      name: name,
+    }
+    
+    await api.post("/category", data)
+    .catch((err) => {
+      console.log(err);
+    })
+    
   }
 
   return(
