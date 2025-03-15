@@ -5,6 +5,7 @@ import Link from 'next/link'
 import logoImg from '/public/Slice Pizza - brancovermelho.png'
 import { api } from '@/services/api'
 import { redirect } from 'next/navigation'
+import { toast } from 'sonner';
 
 export default function Signup(){
 
@@ -16,7 +17,8 @@ export default function Signup(){
     const password = formData.get("password")
 
     if(name === "" || email === "" || password === ""){
-      console.log("PREENCHA TODOS OS CAMPOS")
+      toast.warning("Preencha todos os campos!")
+
       return;
     }
 
@@ -32,6 +34,7 @@ export default function Signup(){
       console.log(err)
     }
 
+    toast.success("Conta criada com sucesso!")
     redirect("/")
   }
 

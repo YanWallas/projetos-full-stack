@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { api } from '@/services/api'
 import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
+import { toast } from 'sonner';
 
 export default function Page(){
 
@@ -16,6 +17,7 @@ export default function Page(){
     const password = formData.get("password")
 
     if(email === "" || password ===""){
+      toast.warning("Preencha todos os campos!")
       return;
     }
 
@@ -26,6 +28,7 @@ export default function Page(){
       })
 
       if(!response.data.token){
+        toast.warning("Email ou senha incorretos!")
         return;
       }
       console.log(response.data);
@@ -46,7 +49,7 @@ export default function Page(){
     }
 
     redirect("/dashboard")
-
+    
   }
 
   return(

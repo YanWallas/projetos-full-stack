@@ -3,6 +3,7 @@ import { Button } from '@/app/dashboard/components/button/';
 import { api } from '@/services/api';
 import { getCookieServer } from '@/lib/cookieServer';
 import { redirect } from 'next/navigation';
+import { toast } from 'sonner';
 
 export default function Category(){
 
@@ -25,11 +26,12 @@ export default function Category(){
       }
     })
     .catch((err) => {
+      toast.warning("Erro ao cadastrar categoria!!!")
       console.log(err);
       return;
     })
 
-    redirect("/dashborard");
+    redirect("/dashboard");
   }
 
   return(
