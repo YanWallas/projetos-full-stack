@@ -1,4 +1,3 @@
-import { parseAppSegmentConfig } from 'next/dist/build/segment-config/app/app-segment-config';
 import styles from './page.module.scss'
 import logoImg from '/public/Slice Pizza - brancovermelho.png'
 import Image from 'next/image'
