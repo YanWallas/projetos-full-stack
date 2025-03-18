@@ -13,8 +13,8 @@ interface Props{
 export default function Orders({ orders }: Props){
   const { isOpen, onRequestOpren } = use(OrderContext)
 
-  function handleDetailOrder(order_id: string){
-    onRequestOpren(order_id)
+  async function handleDetailOrder(order_id: string){
+    await onRequestOpren(order_id)
   }
 
   return(

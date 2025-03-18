@@ -5,7 +5,7 @@ import { use } from 'react'
 import { OrderContext } from '@/providers/order';
 
 export function Modaloarder(){
-  const { onRequestClose } = use(OrderContext);
+  const { onRequestClose, order } = use(OrderContext);
 
   return(
     <dialog className={styles.dialogContainer}>
@@ -18,13 +18,21 @@ export function Modaloarder(){
           <h2>Detalhes do Pedido</h2>
 
           <span className={styles.table}>
-            Mesa <b>36</b>
+            Mesa <b>{order[0].order.table}</b>
           </span>
 
-          <section className={styles.item}>
-            <span>1 - <b>Pizza Catupiry</b></span>
-            <span className={styles.description}>Pizza de frango com catupiry, borda recheada</span>
-          </section>
+          {order[0].order?.name && (
+            <span className={styles.name}>
+            Nome <b>{order[0].order.name}</b>
+          </span>
+          )}
+
+          {order.map(item => (
+            <section className={styles.item} key={item.id}>
+            <span>{item.amount} - <b>{item.product.name}</b></span>
+            <span className={styles.description}>{item.product.description}</span>
+            </section>
+          ))}
 
           <button className={styles.buttonOrder}>
             Concluir pedido
