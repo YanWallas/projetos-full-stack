@@ -43,7 +43,7 @@ export function Modaloarder(){
             </section>
           ))}
 
-          <h3 className={styles.total}>Valor Total: R$ {calculateTotalOrder(order)}</h3>
+          <h3 className={styles.total}>Valor Total: <span className={styles.totalcor}>R$ {calculateTotalOrder(order)}</span></h3>
 
           <button className={styles.buttonOrder} onClick={handleFinishOrder}>
             Concluir pedido
