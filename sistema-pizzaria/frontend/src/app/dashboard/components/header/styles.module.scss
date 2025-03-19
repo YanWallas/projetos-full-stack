@@ -47,10 +47,29 @@
   .headerContent nav{
     gap: 8px;
 
+    button{
+      margin-left: 8px;
+    }
+
   }
 
   .img{
     width: 120px;
     height: 20px;
+  }
+}
+
+@media (max-width: 350px){
+  .headerContent nav{
+    gap: 4px;
+
+    button{
+      margin-left: 6px;
+    }
+  }
+
+  .img{
+    width: 80px;
+    height: 14px;
   }
 }
