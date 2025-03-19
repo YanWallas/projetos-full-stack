@@ -23,23 +23,25 @@ export function Modaloarder(){
         <article className={styles.container}>
           <h2>Detalhes do Pedido</h2>
 
-          <span className={styles.table}>
-            Mesa <b>{order[0].order.table}</b>
-          </span>
+          <div className={styles.tableName}>
+            <span className={styles.table}>
+              Mesa <b>{order[0].order.table}</b>
+            </span>
 
-          {order[0].order?.name && (
-            <span className={styles.name}>
-            Nome <b>{order[0].order.name}</b>
-          </span>
-          )}
+            {order[0].order?.name && (
+              <span className={styles.name}>
+              Nome <b>{order[0].order.name}</b>
+            </span>
+            )}
+          </div>
 
           {order.map(item => (
             <section className={styles.item} key={item.id}>
-            <span>
-              Qtd: {item.amount} - <b>{item.product.name}</b> - R$ {parseFloat(item.product.price)*item.amount}
-              <img src={`http://localhost:3333/files/${item.product.banner}`} width={40} height={40}/><br />
-              <span className={styles.description}>{item.product.description}</span>
-            </span>
+              <span>
+                Qtd: {item.amount} - <b>{item.product.name}</b> - R$ {parseFloat(item.product.price)*item.amount}
+                <img src={`http://localhost:3333/files/${item.product.banner}`} width={40} height={40}/><br />
+                <span className={styles.description}>{item.product.description}</span>
+              </span>
             </section>
           ))}
 

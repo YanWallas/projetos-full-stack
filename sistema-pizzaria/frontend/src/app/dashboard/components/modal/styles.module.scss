@@ -32,6 +32,10 @@
   }
 }
 
+.tableName{
+  margin-bottom: 2rem;
+}
+
 .table{
   background-color: var(--red-900);
   padding: 8px;
@@ -42,6 +46,10 @@
   background-color: transparent;
   border: 0;
   float: right;
+
+  span{
+    margin-bottom: 2rem;
+  }
 }
 
 .item{
