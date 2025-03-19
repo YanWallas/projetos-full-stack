@@ -38,7 +38,7 @@
   transition: all 0.3s;
 
   &:focus {
-    border-color: #ff3f4b;
+    border-color: var(--red-700);
     box-shadow: 0 0 10px rgba(255, 63, 75, 0.3);
     transform: translateY(-2px);
   }
@@ -53,14 +53,14 @@
   height: 50px;
   border: 0;
   border-radius: 8px;
-  background: #ff3f4b;
+  background: var(--red-700);
   color: #fff;
   font-size: 1.1rem;
   font-weight: bold;
   transition: all 0.3s;
 
   &:hover {
-    background: #ff2038;
+    background: var(--red-700);
     transform: translateY(-2px);
   }
 }
@@ -74,7 +74,7 @@
   transition: color 0.3s;
 
   &:hover {
-    color: #ff3f4b;
+    color: var(--red-700);
   }
 }
 

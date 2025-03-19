@@ -1,10 +1,14 @@
 .container{
   max-width: 720px;
   margin: 20px auto;
-  padding: 0 16px;
+  padding: 2rem;
 
   display: flex;
   flex-direction: column;
+
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 
   h1{
     color: var(--white);
@@ -20,10 +24,20 @@
 
 .input{
   height: 40px;
-  border: 0;
-  background-color: var(--brown-900);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
   padding: 0 16px;
   color: var(--white);
-  border: 1px solid var(--red-900);
+  transition: all 0.3s;
+
+  &:focus {
+    border-color: var(--red-700);
+    box-shadow: 0 0 10px rgba(255, 63, 75, 0.3);
+    transform: translateY(-2px);
+  }
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
 }

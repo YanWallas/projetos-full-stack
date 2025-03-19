@@ -1,11 +1,15 @@
 .container{
   max-width: 720px;
   margin: 20px auto;
-  padding: 0 16px;
+  padding: 2rem;
 
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 
   h1{
     color: var(--white);
@@ -38,16 +42,18 @@
 
 .orderItem{
   display: flex;
-  background-color: var(--brown-900);
+  background: rgba(255, 255, 255, 0.05);
   align-items: center;
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 18px;
   border-radius: 8px;
   color: var(--white);
   transition: all 1.3s;
 
   &:hover{
-    filter: brightness(1.40);
+    border-color: #3fffa3;
+    box-shadow: 0 0 10px rgba(63, 255, 163, 0.3);
+    transform: translateY(-2px);
   }
 }
 
