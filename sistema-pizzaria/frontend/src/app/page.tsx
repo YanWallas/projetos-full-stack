@@ -1,4 +1,4 @@
-import styles from './page.module.scss'
+import styles from './styles.module.scss'
 import logoImg from '/public/Slice Pizza - brancovermelho.png'
 import Image from 'next/image'
 import Link from 'next/link'
