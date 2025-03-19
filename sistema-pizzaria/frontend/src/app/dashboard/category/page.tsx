@@ -1,15 +1,17 @@
+"use client"
+import { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { Button } from '@/app/dashboard/components/button/';
 import { api } from '@/services/api';
-import { getCookieServer } from '@/lib/cookieServer';
-import { redirect } from 'next/navigation';
+import { getCookieClient } from '@/lib/cookieClient';
+import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
 export default function Category(){
+  const [categories, setCategories] = useState([]);
+  const router = useRouter();
 
   async function handleRegisterCategory(formData: FormData) {
-    "use server"
-
     const name = formData.get("name")
 
     if(name === "") return;
@@ -18,7 +20,7 @@ export default function Category(){
       name: name,
     }
     
-    const token = await getCookieServer();
+    const token = await getCookieClient();
     
     await api.post("/category", data, {
       headers:{
@@ -31,8 +33,31 @@ export default function Category(){
       return;
     })
 
-    redirect("/dashboard");
+    toast.success("Categoria cadastrada com sucesso!")
+    router.push("/dashboard")
   }
+
+  async function fetchCategories(){
+    try{
+      //Buscando o token
+      const token = await getCookieClient();
+
+      //Buscando as categorias
+      const response = await api.get("/category", {
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
+
+      setCategories(response.data);
+    } catch(err){
+      console.log("Erro ao buscar categories", err);
+    }
+  }
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   return(
     <main className={styles.container}>
@@ -49,6 +74,19 @@ export default function Category(){
 
         <Button name="Cadastrar"/>
       </form>
+
+      <section className={styles.list}>
+        <h2>Categorias ja cadastradas:</h2>
+        <ul>
+         {categories.length > 0 ? (
+            categories.map((category: { id: number, name: string }) => (
+              <li key={category.id}>{category.name}</li>
+            ))
+          ): (
+            <p>Nehuma categoria cadastrada...</p>
+         )}
+        </ul>
+      </section>
     </main>
   )
 }
