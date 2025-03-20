@@ -6,6 +6,7 @@ import { api } from '@/services/api';
 import { getCookieClient } from '@/lib/cookieClient';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import { Delete, DeleteIcon } from 'lucide-react';
 
 export default function Category(){
   const [categories, setCategories] = useState([]);
@@ -59,6 +60,26 @@ export default function Category(){
     fetchCategories();
   }, []);
 
+  async function handleDeleteCategory(category_id : Number){
+    const categoryId = category_id;
+    alert(categoryId);
+    //const token = await getCookieClient();
+
+    // await api.delete(`/category/${categoryId}`, {
+    //   headers:{
+    //     Authorization: `Bearer ${token}`
+    //   }
+    // })
+    // .catch((err) => {
+    //   toast.warning("Erro ao deletar categoria!!!")
+    //   console.log(err);
+    //   return;
+    // })
+
+    // toast.success("Categoria deletada com sucesso!")
+    // fetchCategories();
+  }
+
   return(
     <main className={styles.container}>
       <h1>Nova Categoria</h1>
@@ -80,7 +101,11 @@ export default function Category(){
         <ul>
          {categories.length > 0 ? (
             categories.map((category: { id: number, name: string }) => (
-              <li key={category.id}>{category.name}</li>
+              <li key={category.id}>
+                {category.name}
+                <DeleteIcon size={24} className={styles.buttonLi} onClick={() => handleDeleteCategory(category.id)} />
+              </li>
+              
             ))
           ): (
             <p>Nehuma categoria cadastrada...</p>
