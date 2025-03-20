@@ -7,6 +7,7 @@ interface CategoryRequest{
 class DeleteCategoryService{
   async execute({category_id}: CategoryRequest) {
 
+    console.log("id", category_id);
     const category = await prismaClient.category.delete({
       where:{
         id: category_id,

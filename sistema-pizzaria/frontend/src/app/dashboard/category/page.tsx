@@ -61,10 +61,13 @@ export default function Category(){
   }, []);
 
   async function handleDeleteCategory(category_id : Number){
-    const categoryId = category_id;
     const token = await getCookieClient();
 
-    await api.delete(`/category/${categoryId}`, {
+
+    await api.delete(`/category/remove`, {
+      params:{
+        category_id: String(category_id),
+      },
       headers:{
         Authorization: `Bearer ${token}`
        }
@@ -102,7 +105,10 @@ export default function Category(){
             categories.map((category: { id: number, name: string }) => (
               <li key={category.id}>
                 {category.name}
-                <DeleteIcon size={24} className={styles.buttonLi} onClick={() => handleDeleteCategory(category.id)} />
+                <DeleteIcon 
+                  size={24} 
+                  className={styles.buttonLi} 
+                  onClick={() => handleDeleteCategory(category.id)} />
               </li>
               
             ))
