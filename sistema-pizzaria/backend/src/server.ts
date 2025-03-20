@@ -4,6 +4,7 @@ import cors from 'cors';
 import path from "path";
 
 import { router } from "./routes";
+import fileUpload from "express-fileupload";
 
 const app = express();
 
@@ -12,6 +13,10 @@ app.use(express.json());
 
 // Pacote para habilitar qualquer URL/IP conseguir fazer requisição nessa API.
 app.use(cors());
+
+app.use(fileUpload({
+  limits: { fileSize: 50 * 1024 * 1024 },// No maximo 50mb de img
+}));
 
 // vai utilizar essa route
 app.use(router);

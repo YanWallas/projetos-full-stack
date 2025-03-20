@@ -50,7 +50,8 @@ router.get('/category', isAuthenticated, new ListCategoryController().handle)
 router.delete('/category/remove', isAuthenticated, new DeleteCategoryController().handle)
 
 // -- ROTAS PRODUCT
-router.post('/product', isAuthenticated, upload.single('file'), new CreateProductController().handle)
+//router.post('/product', isAuthenticated, upload.single('file'), new CreateProductController().handle)
+router.post('/product', isAuthenticated, new CreateProductController().handle)
 
 // --ROTAS PARA PEGAR TODOS OS PRODUTOS DE UMA CATEGORIA
 router.get('/category/product', isAuthenticated, new ListByCategoryController().handle)

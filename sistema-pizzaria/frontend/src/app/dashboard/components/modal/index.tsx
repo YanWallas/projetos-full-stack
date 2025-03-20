@@ -39,7 +39,7 @@ export function Modaloarder(){
             <section className={styles.item} key={item.id}>
               <span>
                 Qtd: {item.amount} - <b>{item.product.name}</b> - R$ {parseFloat(item.product.price)*item.amount}
-                <img src={`http://localhost:3333/files/${item.product.banner}`} width={40} height={40}/><br />
+                <img src={item.product.banner} width={40} height={40}/><br />
                 <span className={styles.description}>{item.product.description}</span>
               </span>
             </section>
