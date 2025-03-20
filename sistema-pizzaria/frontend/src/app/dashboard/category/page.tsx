@@ -6,7 +6,7 @@ import { api } from '@/services/api';
 import { getCookieClient } from '@/lib/cookieClient';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
-import { Delete, DeleteIcon } from 'lucide-react';
+import { DeleteIcon } from 'lucide-react';
 
 export default function Category(){
   const [categories, setCategories] = useState([]);
@@ -62,22 +62,21 @@ export default function Category(){
 
   async function handleDeleteCategory(category_id : Number){
     const categoryId = category_id;
-    alert(categoryId);
-    //const token = await getCookieClient();
+    const token = await getCookieClient();
 
-    // await api.delete(`/category/${categoryId}`, {
-    //   headers:{
-    //     Authorization: `Bearer ${token}`
-    //   }
-    // })
-    // .catch((err) => {
-    //   toast.warning("Erro ao deletar categoria!!!")
-    //   console.log(err);
-    //   return;
-    // })
+    await api.delete(`/category/${categoryId}`, {
+      headers:{
+        Authorization: `Bearer ${token}`
+       }
+    })
+    .catch((err) => {
+      toast.warning("Erro ao deletar categoria!!!")
+      console.log(err);
+      return;
+    })
 
-    // toast.success("Categoria deletada com sucesso!")
-    // fetchCategories();
+    toast.success("Categoria deletada com sucesso!")
+    fetchCategories();
   }
 
   return(
