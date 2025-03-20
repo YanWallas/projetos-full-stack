@@ -8,6 +8,7 @@ import { DetailUserController } from "./controllers/user/DetailUserController";
 
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
 import { ListCategoryController } from "./controllers/category/ListCategoryController";
+import { DeleteCategoryController } from "./controllers/category/DeleteCategoryController";
 
 import { CreateProductController } from "./controllers/product/CreateProductController";
 import { ListByCategoryController } from "./controllers/product/ListByCategoryController";
@@ -45,6 +46,8 @@ router.post('/category', isAuthenticated, new CreateCategoryController().handle)
 
 // -- ROTA QUE LISTA TODAS AS CATEGORY
 router.get('/category', isAuthenticated, new ListCategoryController().handle)
+
+router.delete('/category/remove', isAuthenticated, new DeleteCategoryController().handle)
 
 // -- ROTAS PRODUCT
 router.post('/product', isAuthenticated, upload.single('file'), new CreateProductController().handle)
