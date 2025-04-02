@@ -5,23 +5,26 @@ import Tarefa from "./src/Tarefa";
 
 export default function App() {
   const [tarefa, setTarefa] = useState("");
-  const [list, setlist] = useState([
-    {
-      key: '1',
-      item: 'Fazer compras',
-    },
-    {
-      key: '2',
-      item: 'Estudar React Native',
-    },
-    {
-      key: '3',
-      item: 'Fazer exercícios',
-    }
-  ]);
+  const [list, setList] = useState([]);
 
   function handleAdd(){
-    alert(tarefa);
+    if(tarefa === "") return;
+
+    const dados = {
+      key: Date.now(),
+      tarefa: tarefa
+    }
+
+    setList(oldArray => [dados, ...oldArray]);
+    setTarefa("");
+  }
+
+  function handleDelete(item){
+    let filtroItem = list.filter((tarefa) => {
+      return (tarefa.item !== item)
+    })
+
+    setList(filtroItem);
   }
 
 
@@ -45,7 +48,7 @@ export default function App() {
       <FlatList
         data={list}
         keyExtractor={ (item) => item.key }
-        renderItem={({ item }) => <Tarefa data={item}/>} 
+        renderItem={ ({ item }) => <Tarefa data={item} deleteItem={() => handleDelete(item.item)} />} 
         style={styles.list}
       />
     </View>
