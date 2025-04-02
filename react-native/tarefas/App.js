@@ -4,7 +4,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import Tarefa from "./src/Tarefa";
 
 export default function App() {
-  const [tarefa, setTarefa] = useState("");
+  const [tarefa, setTarefa] = useState('');
   const [list, setList] = useState([]);
 
   function handleAdd(){
@@ -12,7 +12,7 @@ export default function App() {
 
     const dados = {
       key: Date.now(),
-      tarefa: tarefa
+      item: tarefa
     }
 
     setList(oldArray => [dados, ...oldArray]);
