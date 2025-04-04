@@ -17,7 +17,7 @@ export default function Dashboard() {
     }
 
     //Precisa fazer a requisição e abrir a mesa e navegar para a próxima tela.
-    navigation.navigate('Order')
+    navigation.navigate('Order', { number: number, order_id: '' });
   }
 
   return(
