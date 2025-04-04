@@ -4,18 +4,18 @@ import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from "reac
 import { AuthContext } from "../../contexts/AuthContext";
 
 export default function SignIn() {
-  const { user } = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);// Importa o contexto de autenticação
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleLogin() {
+  async function handleLogin() {// Função para fazer o login
     if(email === "" || password === "") {
       alert("Preencha todos os campos");
       return;
     }
 
-    alert("Email: " + email + "\nSenha: " + password);
+    await signIn({ email, password })// Chama a função de autenticação
   }
 
   return(

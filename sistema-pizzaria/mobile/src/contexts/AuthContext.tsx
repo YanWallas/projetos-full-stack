@@ -1,8 +1,11 @@
 import React, { createContext, ReactNode, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { api } from '../services/api';
 
 type AuthContextData = {
   user: UserProps;
   isAuthenticated: boolean;
+  signIn: (credentials: SignInProps) => Promise<void>;
 }
 
 type UserProps ={
@@ -16,9 +19,14 @@ type AuthProviderProps = {
   children: ReactNode;
 }
 
+type SignInProps = {
+  email: string;
+  password: string;
+}
+
 export const AuthContext = createContext({} as AuthContextData);
 
-export function AuthProvider({ children }: AuthProviderProps) {
+export function AuthProvider({ children }: AuthProviderProps) {// Cria o contexto de autenticação
   const [user, setUser] = useState<UserProps>({
     id: '',
     name: '',
@@ -26,10 +34,48 @@ export function AuthProvider({ children }: AuthProviderProps) {
     token: ''
   });
 
+  const [loadingAuth, setLoadingAuth] = useState(false);
+
   const isAuthenticated = !!user.name; //Verifica se o usuário está autenticado
 
+  async function signIn({email, password}: SignInProps){// Função para autenticar o usuário
+    setLoadingAuth(true);
+
+    try {
+      const response = await api.post('/session', {// Envia os dados para a API
+        email,
+        password
+      })
+
+      //console.log('resposta', response.data);
+
+      const { id, name, token } = response.data;// Desestruturação dos dados retornados da API
+
+      const data = {// Cria um objeto com os dados do usuário
+        ...response.data
+      };
+
+      await AsyncStorage.setItem('@slicepizzaria', JSON.stringify(data));// Armazena os dados do usuário no AsyncStorage
+
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;// Adiciona o token no header padrão da aplicação
+
+      setUser({// Atualiza o estado do usuário
+        id,
+        name,
+        email,
+        token
+      })
+
+      setLoadingAuth(false);
+
+    }catch (error) {
+      console.log('erro ao acessar', error);
+      setLoadingAuth(false);
+    }
+  }
+
   return(
-    <AuthContext.Provider value={{ user , isAuthenticated }}>
+    <AuthContext.Provider value={{ user , isAuthenticated, signIn }}>
       {children}
     </AuthContext.Provider>
   )
