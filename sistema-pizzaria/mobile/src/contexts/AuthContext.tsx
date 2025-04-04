@@ -1,7 +1,6 @@
 import React, { createContext, ReactNode, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { api } from '../services/api';
-import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
 type AuthContextData = {
   user: UserProps;
@@ -124,7 +123,7 @@ export function AuthProvider({ children }: AuthProviderProps) {// Cria o context
         loading, 
         signOut 
       }}>
-        
+
       {children}
     </AuthContext.Provider>
   )
