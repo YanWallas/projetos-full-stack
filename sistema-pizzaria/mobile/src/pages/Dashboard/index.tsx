@@ -30,7 +30,7 @@ export default function Dashboard() {
 
   return(
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}> Novo pedido</Text>
+      <Text style={styles.title}>Novo pedido</Text>
 
       <TextInput
         placeholder="Número da mesa"
