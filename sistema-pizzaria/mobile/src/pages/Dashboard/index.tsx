@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Text, SafeAreaView, TouchableOpacity, TextInput, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { StackParamList } from "../../routes/app.routes"; 
 import { api } from "../../services/api";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Dashboard() {
+  const { signOut } = useContext(AuthContext);
   const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>();
 
   const [number, setNumber] = useState("");
@@ -30,6 +32,10 @@ export default function Dashboard() {
 
   return(
     <SafeAreaView style={styles.container}>
+      <TouchableOpacity style={styles.buttonSair} onPress={signOut}>
+        <Text style={styles.textButtonSair}>SAIR</Text>
+      </TouchableOpacity>
+
       <Text style={styles.title}>Novo pedido</Text>
 
       <TextInput
@@ -88,5 +94,19 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     color: "#9c3434",
+  },
+  buttonSair:{
+    position: "absolute",
+    top: '5%',
+    right: '5%',
+    backgroundColor: "#9c3434",
+    borderRadius: 4,
+  },
+  textButtonSair:{
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#fff",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
   }
 });
