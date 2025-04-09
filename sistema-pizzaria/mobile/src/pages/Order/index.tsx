@@ -175,6 +175,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     color: "#fff",
     fontSize: 20,
+    alignItems: 'center',
   },
   qtdContainer:{
     flexDirection: 'row',

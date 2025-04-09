@@ -44,22 +44,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   content:{
-    width: WIDTH - 20,
+    width: WIDTH - 30,
     height: HEIGHT / 2,
-    backgroundColor: "#FFF",
+    backgroundColor: " rgba(0, 0, 0, 0.9)",
     borderWidth: 1,
-    borderColor: "#8a8a8a",
+    borderColor: "#ff2038",
     borderRadius: 4,
   },
   option:{
-    alignItems: "flex-start",
+    alignItems: "center",
     borderTopWidth: 1,
-    borderColor: "#8a8a8a",
+    borderColor: "#ff2038",
+
   },
   item:{
-    margin: 18,
-    fontSize: 14,
+    margin: 16,
+    fontSize: 16,
     fontWeight: "bold",
-    color: "#101026",
+    color: "#F0f0f0",
   }
 });
