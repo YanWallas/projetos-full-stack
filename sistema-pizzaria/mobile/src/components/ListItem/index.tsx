@@ -32,7 +32,7 @@ export function ListItem({ data, deleteItem }: ItemProps){8
 
 const styles = StyleSheet.create({
   container:{
-    backgroundColor: '#101026',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-between',

@@ -17,6 +17,8 @@ import { api } from "../../services/api";
 import { ModalPicker } from "../../components/ModalPicker";
 import { ListItem } from "../../components/ListItem";
 
+import AntDesign from '@expo/vector-icons/AntDesign';
+
 type RouteDetailParams = {
   order: {
     number: string | number;
@@ -156,12 +158,14 @@ export default function Order(){
       {category.length !== 0 && (
         <TouchableOpacity style={styles.input} onPress={() => setModalVisible(true)}>
         <Text style={{ color: '#FFF' }}>{categorySelected?.name}</Text>
+        <AntDesign style={styles.select} name="downcircleo" size={24} />
         </TouchableOpacity>
       )}
 
       {products.length !== 0 && (
         <TouchableOpacity style={styles.input} onPress={() => setModalVisibleProduct(true)}>
           <Text style={{ color: '#FFF' }}>{productSelected?.name}</Text>
+          <AntDesign style={styles.select} name="downcircleo" size={24} />
         </TouchableOpacity>
       )}
 
@@ -188,6 +192,7 @@ export default function Order(){
           <Text style={styles.buttonText}>Avançar</Text>
         </TouchableOpacity>
       </View>
+
 
       <FlatList
         showsVerticalScrollIndicator={false}
@@ -251,11 +256,16 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 40,
     marginBottom: 12,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     paddingHorizontal: 8,
     color: "#fff",
     fontSize: 20,
     alignItems: 'center',
+    flexDirection: 'row'
+  },
+  select:{
+    alignItems: 'flex-end',
+    color: '#FFF',
   },
   qtdContainer:{
     flexDirection: 'row',
