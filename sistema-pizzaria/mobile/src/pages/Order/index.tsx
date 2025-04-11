@@ -19,6 +19,9 @@ import { ListItem } from "../../components/ListItem";
 
 import AntDesign from '@expo/vector-icons/AntDesign';
 
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { StackParamList } from "../../routes/app.routes";
+
 type RouteDetailParams = {
   order: {
     number: string | number;
@@ -47,7 +50,7 @@ type OrderRouteProps = RouteProp<RouteDetailParams, 'order'>;
 
 export default function Order(){
   const route = useRoute<OrderRouteProps>();
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>();
 
   const [category, setCategory] = useState<CategoryProps[] | []>([]);
   const [categorySelected, setCategorySelected] = useState<CategoryProps | undefined>();
@@ -142,6 +145,10 @@ export default function Order(){
     setItems(removeItem);
   }
 
+  function handleFinishOrder(){
+    navigation.navigate('FinishOrder');
+  }
+
   return(
     <View style={styles.container}>
 
@@ -188,6 +195,7 @@ export default function Order(){
         <TouchableOpacity 
           style={[styles.button, { opacity: items.length === 0 ? 0.3 : 1 }]}
           disabled={items.length === 0}
+          onPress={handleFinishOrder}
         >
           <Text style={styles.buttonText}>Avançar</Text>
         </TouchableOpacity>
